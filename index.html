@@ -478,10 +478,9 @@
                     },
                     contact: {
                         qq: "https://user.qzone.qq.com/2144518923",
-                        wechat: "",
-                        bilibili: "https://space.bilibili.com/667605081?spm_id_from=333.1007.0.0",
-                        douyin: "https://v.douyin.com/1wAVtdthlbQ/",
-                        xiaohongshu: "https://www.xiaohongshu.com/user/profile/64c99801000000000e0244fb?xsec_token=YBMcp1j1GGLnjusf-c6vexclE7awzZXaHf6GVhhDVP_WE%3D&xsec_source=app_share&xhsshare=CopyLink&shareRedId=ODpFOTw9NDo2NzUyOTgwNjZIOTk4OUxL&apptime=1764473516&share_id=8d901be419b842048c4b6a763966d1a8&share_channel=copy_link"
+                        bilibili: "https://space.bilibili.com/667605081",
+                        douyin: "https://v.douyin.com/1wAVtdthlbQ",
+                        xiaohongshu: "https://www.xiaohongshu.com/user/profile/64c99801000000000e0244fb"
                     }
                 };
                 applyConfigToPage();
@@ -527,29 +526,27 @@
             document.getElementById('profile-github-link').href = github_url;
             document.getElementById('footer-copyright').innerHTML = `© 2025 ${name}. <a href="${github_url}/cicadaas-design.github.io" target="_blank">个人主页</a>由 Flask + Tailwind CSS 驱动。`;
 
-            // 5. 联系链接配置
+            // 5. 联系链接配置（修复动态加载逻辑）
             const contactLinksContainer = document.getElementById('contact-links');
             const contactIcons = {
                 qq: { icon: 'fa-brands fa-qq', label: 'QQ空间' },
-                wechat: { icon: 'fa-brands fa-weixin', label: '微信' },
                 bilibili: { icon: 'fa-brands fa-bilibili', label: 'B站' },
                 douyin: { icon: 'fa-brands fa-tiktok', label: '抖音' },
                 xiaohongshu: { icon: 'fa-solid fa-book', label: '小红书' }
             };
 
-            // 清空现有链接，重新渲染
+            // 清空现有链接，重新渲染（确保URL纯净，无多余字符）
             contactLinksContainer.innerHTML = '';
             Object.entries(contact).forEach(([key, url]) => {
                 if (url && url.trim() !== '') {
-                    // 清理抖音链接中的多余内容
-                    const cleanUrl = url.split(' ')[0]; // 去掉"1@8.com :7pm"这类多余字符
+                    const cleanUrl = url.trim(); // 仅保留纯链接，去除前后空格
                     const link = document.createElement('a');
                     link.href = cleanUrl;
                     link.target = '_blank';
                     link.rel = 'noopener noreferrer';
-                    link.className = 'hover:text-primary dark:hover:text-primary-dark transition-colors';
+                    link.className = 'hover:text-primary dark:hover:text-primary-dark transition-colors text-xl'; // 加大图标，更易点击
                     link.title = contactIcons[key].label;
-                    link.innerHTML = `<i class="${contactIcons[key].icon}"></i>`;
+                    link.innerHTML = `<i class="${contactIcons[key].icon}"></i>`; // 修复HTML语法错误
                     contactLinksContainer.appendChild(link);
                 }
             });

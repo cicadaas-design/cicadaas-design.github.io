@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cicadaas - 个人主页</title>
     <!-- 网页图标，使用用户头像并确保是圆形的 -->
-    
     <link rel="icon" href="https://avatars.githubusercontent.com/u/142971357?v=4" type="image/png">
     <!-- 使用SVG过滤器确保头像显示为圆形 -->
     <svg width="0" height="0" style="position:absolute;">
@@ -137,17 +136,13 @@
         
         /* 背景样式 */
         body {
-            
             background-color: #121212;
-            
         }
         
         /* 在没有背景图片时使用默认背景色 */
         
-        
         /* 背景图片容器 */
         .bg-container {
-            
             position: fixed;
             top: 0;
             left: 0;
@@ -155,12 +150,10 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            
         }
         
         /* 背景图片 */
         .bg-image {
-            
             position: absolute;
             top: 0;
             left: 0;
@@ -171,12 +164,10 @@
             background-position: center;
             filter: blur(4px);
             transform: scale(1.1); /* 略微放大以避免边缘出现空白 */
-            
         }
         
         /* 背景遮罩 */
         .bg-overlay {
-            
             position: absolute;
             top: 0;
             left: 0;
@@ -184,14 +175,11 @@
             height: 100%;
             background-color: #f3f4f6;
             opacity: 0.6;
-            
         }
         
         /* 深色模式下的背景遮罩 */
         .dark .bg-overlay {
-            
             background-color: #121212;
-            
         }
         
         /* 动画样式 */
@@ -229,6 +217,11 @@
         .tech-icon {
             filter: drop-shadow(0 0 5px rgba(106, 17, 203, 0.5));
         }
+        /* 项目卡片图片自适应 */
+        .project-img {
+            height: 180px;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body class="text-gray-800 dark:text-gray-200 min-h-screen">
@@ -243,13 +236,11 @@
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <!-- 顶栏左上角显示头像和用户名 -->
             <div class="flex items-center space-x-3">
-                
                 <img 
                     src="https://avatars.githubusercontent.com/u/142971357?v=4" 
                     alt="cicadaas" 
                     class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-700 shadow-sm"
                 >
-                
                 <span class="font-bold text-lg">cicadaas</span>
             </div>
             <div class="flex items-center space-x-4">
@@ -264,7 +255,8 @@
                     <i class="fa-solid fa-moon dark:hidden text-gray-700"></i>
                     <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
                 </button>
-                <a href="https://github.com/cicadaas" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                <!-- 统一GitHub链接为cicadaas-design -->
+                <a href="https://github.com/cicadaas-design" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                     <i class="fa-brands fa-github text-xl"></i>
                 </a>
             </div>
@@ -288,9 +280,11 @@
                     <!-- 基本信息 -->
                     <div class="text-center mb-6">
                         <h1 class="text-2xl font-bold mb-2">cicadaas</h1>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">数学建模爱好者，Python编程爱好者，AI技术爱好者。</p>
+                        <!-- 修改个人简介，贴合数学专业和兴趣 -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">河北工业大学数学专业 | 数学建模爱好者 | Python编程 & AI技术学习者</p>
+                        <!-- 统一GitHub链接 -->
                         <a 
-                            href="https://github.com/cicadaas" 
+                            href="https://github.com/cicadaas-design" 
                             target="_blank" 
                             rel="noopener noreferrer" 
                             class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-custom text-white font-medium hover:opacity-90 transition-opacity"
@@ -314,29 +308,26 @@
                 <div class="mt-6">
                     <h3 class="text-lg font-semibold mb-3">技术栈</h3>
                     <div class="flex flex-wrap gap-2">
-                        
-                            
-                                <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #6a11cb;">
-                                    <i class="fa-solid fa-code mr-1 tech-icon"></i>
-                                    Python
-                                </span>
-                            
-                                <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #2575fc;">
-                                    <i class="fa-solid fa-code mr-1 tech-icon"></i>
-                                    JavaScript
-                                </span>
-                            
-                                <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #560bad;">
-                                    <i class="fa-solid fa-code mr-1 tech-icon"></i>
-                                    HTML/CSS
-                                </span>
-                            
-                                <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #1e40af;">
-                                    <i class="fa-solid fa-code mr-1 tech-icon"></i>
-                                    Flask
-                                </span>
-                            
-                        
+                        <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #6a11cb;">
+                            <i class="fa-solid fa-code mr-1 tech-icon"></i>
+                            Python
+                        </span>
+                        <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #2575fc;">
+                            <i class="fa-solid fa-code mr-1 tech-icon"></i>
+                            数学建模
+                        </span>
+                        <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #560bad;">
+                            <i class="fa-solid fa-code mr-1 tech-icon"></i>
+                            HTML/CSS
+                        </span>
+                        <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #1e40af;">
+                            <i class="fa-solid fa-code mr-1 tech-icon"></i>
+                            Flask
+                        </span>
+                        <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #3b82f6;">
+                            <i class="fa-solid fa-brain mr-1 tech-icon"></i>
+                            机器学习基础
+                        </span>
                     </div>
                 </div>
                 </div>
@@ -359,39 +350,91 @@
                         个人介绍
                     </h2>
                     <div class="prose dark:prose-invert max-w-none" id="readme-content">
-                        <h1>个人主页</h1>
-<p>欢迎来到我的个人主页！这里是我展示自己的空间。</p>
+                        <h1>👋 你好，我是 cicadaas</h1>
+<p>欢迎来到我的个人主页！我是河北工业大学数学专业的一名学生，热爱数学建模和编程，正在探索AI技术的无限可能。</p>
 <h2>关于我</h2>
-<p>我是一名热爱编程的开发者，喜欢探索新技术和解决各种有趣的问题。</p>
+<ul>
+<li>🎓 河北工业大学数学专业在读</li>
+<li>🔭 正在学习：Python编程、机器学习基础、数学建模进阶</li>
+<li>🤝 大学生科技协会成员，参与校园科技活动策划</li>
+<li>📫 邮箱：cicadaas@163.com</li>
+</ul>
 <h2>技术栈</h2>
 <ul>
-<li>Python</li>
-<li>JavaScript</li>
-<li>HTML/CSS</li>
-<li>Flask</li>
-<li>Vue.js</li>
-<li>React</li>
+<li>编程语言：Python（主要）、HTML/CSS、JavaScript</li>
+<li>工具/框架：Flask、Git、数学建模相关工具（MATLAB、SPSS）</li>
+<li>兴趣方向：机器学习、数据挖掘、数学建模竞赛</li>
 </ul>
-<h2>项目展示</h2>
-<p>在这里你可以查看我在 GitHub 上的最新项目和贡献。</p>
-<h2>联系我</h2>
-<p>如果你对我的项目感兴趣或者有任何问题，可以通过 GitHub 联系我。</p>
+                    </div>
+
+                    <!-- 新增：联系表单 -->
+                    <div class="mt-10 p-6 bg-white/50 dark:bg-gray-700/30 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fa-solid fa-envelope text-primary dark:text-primary-dark mr-2"></i>
+                            联系我
+                        </h3>
+                        <!-- Formspree表单，替换为你的Formspree ID -->
+                        <form action="https://formspree.io/f/mwkdjwqk" method="POST" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium mb-1">姓名</label>
+                                    <input type="text" id="name" name="name" required 
+                                        class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium mb-1">邮箱</label>
+                                    <input type="email" id="email" name="email" required 
+                                        class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-1">留言内容</label>
+                                <textarea id="message" name="message" rows="4" required 
+                                    class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark"></textarea>
+                            </div>
+                            <button type="submit" class="px-6 py-2 rounded-lg bg-gradient-custom text-white font-medium hover:opacity-90 transition-opacity">
+                                <i class="fa-solid fa-paper-plane mr-2"></i>
+                                发送留言
+                            </button>
+                        </form>
                     </div>
                 </div>
 
-                <!-- 最近仓库 -->
+                <!-- 替换：最近项目 → 响应式项目卡片 -->
                 <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 mt-6 card-hover animate-fade-in" style="animation-delay: 0.4s;">
-                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center">
                         <i class="fa-solid fa-folder-open text-primary dark:text-primary-dark mr-2"></i>
-                        最近项目
+                        我的项目
                     </h2>
-                    <div class="space-y-4">
-                        
-                            <div class="p-6 text-center text-gray-500 dark:text-gray-400">
-                                    <i class="fa-solid fa-folder-open text-4xl mb-3"></i>
-                                    <p>暂无项目数据</p>
-                                </div>
-                        
+                    <!-- 响应式项目卡片网格 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 项目1：替换为你的实际项目信息 -->
+                        <div class="bg-white/70 dark:bg-gray-700/50 rounded-xl overflow-hidden shadow-md card-hover">
+                            <img src="https://picsum.photos/seed/project1/800/400" alt="数学建模竞赛项目" class="project-img w-full">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold mb-2">数学建模竞赛项目</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">基于Python的数据分析与建模，解决实际工程问题，包含数据可视化和模型优化。</p>
+                                <a href="https://github.com/cicadaas-design/数学建模项目" target="_blank" rel="noopener noreferrer" 
+                                    class="inline-flex items-center text-primary dark:text-primary-dark font-medium hover:underline">
+                                    <i class="fa-brands fa-github mr-1"></i>
+                                    查看源码
+                                </a>
+                            </div>
+                        </div>
+                        <!-- 项目2：替换为你的实际项目信息 -->
+                        <div class="bg-white/70 dark:bg-gray-700/50 rounded-xl overflow-hidden shadow-md card-hover">
+                            <img src="https://picsum.photos/seed/project2/800/400" alt="个人主页搭建" class="project-img w-full">
+                            <div class="p-4">
+                                <h3 class="text-lg font-bold mb-2">个人主页搭建</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">使用Flask + Tailwind CSS开发的响应式个人主页，支持深色模式和极简模式切换。</p>
+                                <a href="https://github.com/cicadaas-design/cicadaas-design.github.io" target="_blank" rel="noopener noreferrer" 
+                                    class="inline-flex items-center text-primary dark:text-primary-dark font-medium hover:underline">
+                                    <i class="fa-brands fa-github mr-1"></i>
+                                    查看源码
+                                </a>
+                            </div>
+                        </div>
+                        <!-- 可添加更多项目卡片 -->
                     </div>
                 </div>
             </div>
@@ -401,30 +444,25 @@
     <!-- 页脚 -->
     <footer class="glass-panel bg-white/30 dark:bg-gray-800/30 shadow-inner py-6">
         <div class="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
-            <p>© 2025 cicadaas. <a href="https://github.com/SRInternet/Home_Page/" target="_blank">个人主页</a>由 Flask + Tailwind CSS 驱动。</p>
+            <p>© 2025 cicadaas. <a href="https://github.com/cicadaas-design/cicadaas-design.github.io" target="_blank">个人主页</a>由 Flask + Tailwind CSS 驱动。</p>
             <div class="mt-3 space-x-4">
-                <!-- 联系方式图标，仅在配置了有效URL时显示 -->
-                
+                <!-- 联系方式图标 -->
                 <a href="https://qm.qq.com/q/c7DY18rEju" target="_blank" rel="noopener noreferrer" class="hover:text-primary dark:hover:text-primary-dark transition-colors">
                     <i class="fa-brands fa-qq"></i>
                 </a>
-                
-                
-                
                 <a href="https://space.bilibili.com/1969160969" target="_blank" rel="noopener noreferrer" class="hover:text-primary dark:hover:text-primary-dark transition-colors">
                     <i class="fa-brands fa-bilibili"></i>
                 </a>
-                
-                
                 <a href="https://www.douyin.com/user/MS4wLjABAAAATzdjtBBrLLCn69TtPMeseuEUzztbNZzw-9f13adrfiM?relation=0&amp;vid=7143257533807873316" target="_blank" rel="noopener noreferrer" class="hover:text-primary dark:hover:text-primary-dark transition-colors">
                     <i class="fa-brands fa-tiktok"></i>
                 </a>
-                
-                
                 <a href="https://www.xiaohongshu.com/user/profile/6427cf87000000002901166e?xsec_token=YBcPhyaU45_o0XD1fWkS2AJAoXOxWm09mZUN0iNRSVK3E%3D&amp;xsec_source=app_share&amp;xhsshare=CopyLink&amp;shareRedId=ODo0N0ZLPEA2NzUyOTgwNjg8OTg1OzxO&amp;apptime=1760733353&amp;share_id=f252abf542b54551b1c018c51f4a64c8&amp;share_channel=copy_link" target="_blank" rel="noopener noreferrer" class="hover:text-primary dark:hover:text-primary-dark transition-colors">
                     <i class="fa-solid fa-book"></i>
                 </a>
-                
+                <!-- 新增GitHub链接 -->
+                <a href="https://github.com/cicadaas-design" target="_blank" rel="noopener noreferrer" class="hover:text-primary dark:hover:text-primary-dark transition-colors">
+                    <i class="fa-brands fa-github"></i>
+                </a>
             </div>
         </div>
     </footer>

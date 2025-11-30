@@ -1,0 +1,27 @@
+{
+ "github_url": "https://github.com/cicadaas-design",
+  "dark_mode": "dark",
+  "name": "cicadaas",
+  "bio": "数学建模爱好者，Python编程爱好者，AI技术爱好者。",
+  "introduction_file": "Introduction.md",
+  "theme": {
+    "primary_color": "#333333",
+    "secondary_color": "#555555",
+    "dark_primary_color": "#222222",
+    "dark_secondary_color": "#444444"
+  },
+  "background": {
+    "image": "background.jpg",
+    "blur": 8,
+    "overlay_opacity": 0.8,
+    "overlay_color": "#000000",
+    "dark_overlay_color": "#000000"
+  },
+  "contact": {
+    "qq": "https://user.qzone.qq.com/2144518923",
+    "wechat": "",
+    "bilibili": "https://space.bilibili.com/667605081?spm_id_from=333.1007.0.0",
+    "douyin": "https://v.douyin.com/1wAVtdthlbQ/ 1@8.com :7pm",
+    "xiaohongshu": "https://www.xiaohongshu.com/user/profile/64c99801000000000e0244fb?xsec_token=YBMcp1j1GGLnjusf-c6vexclE7awzZXaHf6GVhhDVP_WE%3D&xsec_source=app_share&xhsshare=CopyLink&shareRedId=ODpFOTw9NDo2NzUyOTgwNjZIOTk4OUxL&apptime=1764473516&share_id=8d901be419b842048c4b6a763966d1a8&share_channel=copy_link"
+  }
+}

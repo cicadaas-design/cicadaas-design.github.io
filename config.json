@@ -13,7 +13,7 @@
   "background": {
     "image": "background.jpg",
     "blur": 8,
-    "overlay_opacity": 0.8,
+    "overlay_opacity": 0.9,
     "overlay_color": "#000000",
     "dark_overlay_color": "#000000"
   },
@@ -25,3 +25,4 @@
     "xiaohongshu": "https://www.xiaohongshu.com/user/profile/64c99801000000000e0244fb?xsec_token=YBMcp1j1GGLnjusf-c6vexclE7awzZXaHf6GVhhDVP_WE%3D&xsec_source=app_share&xhsshare=CopyLink&shareRedId=ODpFOTw9NDo2NzUyOTgwNjZIOTk4OUxL&apptime=1764473516&share_id=8d901be419b842048c4b6a763966d1a8&share_channel=copy_link"
   }
 }
+

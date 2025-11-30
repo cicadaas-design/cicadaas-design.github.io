@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 自定义静态文件构建脚本
-这个脚本将直接使用Flask测试客户端来生成静态HTML文件
+这个脚本将直接使用Flask测试客户端来生成静态HTML文件（确保模板语法完全渲染）
 """
 import os
 import sys
@@ -23,10 +23,13 @@ print("正在准备生成静态文件...")
 config_path = os.path.join(here, 'config.json')
 default_config_path = os.path.join(here, 'default', 'default_config.json')
 
+config = {}  # 初始化配置字典
+background_image = 'background.jpg'  # 默认背景图
+
 if os.path.exists(config_path):
     with open(config_path, 'r', encoding='utf-8') as f:
         config = json.load(f)
-    # 从配置中获取背景图片文件名
+    # 从配置中获取背景图片文件名和模板所需变量（如github_info）
     background_image = config.get('background', {}).get('image', 'background.jpg')
 else:
     print("警告：未找到config.json文件")
@@ -46,8 +49,15 @@ else:
     else:
         print("警告：default/default_config.json也不存在，使用默认背景图片")
         background_image = 'background.jpg'
+        # 补充默认模板变量（避免模板变量缺失）
+        config['github_info'] = {
+            "name": "你的名字",
+            "bio": "个人技术主页",
+            "tech_stack": ["Python", "HTML/CSS", "Flask"],
+            "recent_repos": [{"name": "个人主页项目", "description": "基于Flask的静态部署主页"}]
+        }
 
-# 导入app.py并使用Flask测试客户端
+# 导入app.py并使用Flask测试客户端（确保模板渲染）
 try:
     # 动态导入app.py
     spec = importlib.util.spec_from_file_location("app", os.path.join(here, "app.py"))
@@ -55,33 +65,45 @@ try:
     sys.modules["app"] = app_module
     spec.loader.exec_module(app_module)
     
-    # 直接使用Flask测试客户端方法（根据用户反馈，generate_static_html函数有问题）
+    # 直接使用Flask测试客户端方法（确保触发模板渲染）
     if hasattr(app_module, 'app'):
-        print("使用Flask测试客户端获取页面内容...")
+        app = app_module.app  # 获取Flask实例
+        print("使用Flask测试客户端获取页面内容（强制渲染模板）...")
         
-        # 使用Flask测试客户端
-        client = app_module.app.test_client()
-        response = client.get('/')
+        # 关键：将配置注入到Flask实例中，确保模板能获取到变量（如github_info）
+        app.config.update(config)
         
-        if response.status_code == 200:
-            # 保存HTML内容到根目录
-            html_path = os.path.join(static_dir, 'index.html')
+        # 关键：激活Flask应用上下文（避免模板渲染时缺少上下文）
+        with app.app_context():
+            # 使用Flask测试客户端
+            client = app.test_client()
+            response = client.get('/')
             
-            # 确认是否已有index.html文件，如果有则备份
-            if os.path.exists(html_path):
-                backup_path = os.path.join(static_dir, 'index.html.bak')
-                # 检查源文件和目标文件是否相同
-                if os.path.normpath(html_path) != os.path.normpath(backup_path):
-                    shutil.copy(html_path, backup_path)
-                    print(f"已备份现有index.html文件到: {backup_path}")
-            
-            with open(html_path, 'wb') as f:
-                f.write(response.data)
-            
-            print(f"静态HTML文件已保存到项目根目录: {html_path}")
-        else:
-            print(f"错误：无法获取首页内容，状态码: {response.status_code}")
-            sys.exit(1)
+            if response.status_code == 200:
+                # 保存HTML内容到根目录（解码为utf-8，避免乱码）
+                html_path = os.path.join(static_dir, 'index.html')
+                
+                # 确认是否已有index.html文件，如果有则备份
+                if os.path.exists(html_path):
+                    backup_path = os.path.join(static_dir, 'index.html.bak')
+                    # 检查源文件和目标文件是否相同
+                    if os.path.normpath(html_path) != os.path.normpath(backup_path):
+                        shutil.copy(html_path, backup_path)
+                        print(f"已备份现有index.html文件到: {backup_path}")
+                
+                # 解码响应数据为utf-8字符串，再写入文件（确保模板变量已渲染）
+                rendered_html = response.data.decode('utf-8')
+                with open(html_path, 'w', encoding='utf-8') as f:
+                    f.write(rendered_html)
+                
+                # 验证模板是否渲染成功（检查是否还包含{{ }}语法）
+                if '{{' in rendered_html or '}}' in rendered_html:
+                    print("警告：检测到未渲染的模板语法！请检查app.py的路由是否传递了所有模板变量")
+                else:
+                    print(f"静态HTML文件已渲染并保存到项目根目录: {html_path}")
+            else:
+                print(f"错误：无法获取首页内容，状态码: {response.status_code}")
+                sys.exit(1)
     else:
         print("错误：app.py中未找到app实例")
         sys.exit(1)

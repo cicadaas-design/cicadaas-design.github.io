@@ -9,11 +9,6 @@
 ## 技术栈
 
 - Python
-- JavaScript
-- HTML/CSS
-- Flask
-- Vue.js
-- React
 
 ## 项目展示
 

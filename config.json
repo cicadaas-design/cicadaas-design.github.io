@@ -1,5 +1,5 @@
 {
- "github_url": "https://github.com/cicadaas-design",
+  "github_url": "https://github.com/cicadaas-design",
   "dark_mode": "dark",
   "name": "cicadaas",
   "bio": "数学建模爱好者，Python编程爱好者，AI技术爱好者。",
@@ -18,8 +18,7 @@
     "dark_overlay_color": "#000000"
   },
   "contact": {
-    "qq": "https://im.qq.com/2144518923",
-    "wechat": "",
+    "qq": "https://user.qzone.qq.com/2144518923",
     "bilibili": "https://space.bilibili.com/667605081",
     "douyin": "https://v.douyin.com/1wAVtdthlbQ",
     "xiaohongshu": "https://www.xiaohongshu.com/user/profile/64c99801000000000e0244fb"
